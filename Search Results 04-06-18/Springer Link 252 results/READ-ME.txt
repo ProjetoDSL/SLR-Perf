@@ -1,0 +1,2 @@
+This folder contains a .CSV file since that`s the only format Springer Link exports to, the bib file was made using the DOIs gathered from the .CSV file in an application called Zotero (https://www.zotero.org/)
+However the bib file only contains 247 entry`s, the original .csv file contains 252.
