@@ -1,0 +1,14 @@
+
+if(!window.JAWR)
+JAWR={};JAWR.loader={usedBundles:{},script:function(path){this.insert(this.jsbundles,'insertScript',this.mapping,path);},style:function(path,media){this.insert(this.cssbundles,'insertCSS',this.cssmapping,path,media);},insert:function(bundles,func,mappingToUse,path,media){for(var x=0;x<bundles.length;x++){var bundle=bundles[x];if(bundle.belongsToBundle(path)&&!this.usedBundles[bundle.name]){this.usedBundles[bundle.name]=true;var pathtoRender=bundle.alternateProductionURL?bundle.alternateProductionURL:this.normalizePath(mappingToUse+'/'+bundle.prefix+bundle.name);if(bundle.ieExpression)
+this.insertCondComment(bundle.ieExpression,func,pathtoRender,media);else this[func](pathtoRender,media);}}},insertScript:function(path){document.write(' <script type="text/javascript" src="'+path+'" > </script> ');},insertCondComment:function(condition,func,path,media){document.write('<!--['+condition+']>\n');this[func](path,media);document.write('<![endif]-->');},normalizePath:function(path){while(path.indexOf('//')!=-1)
+path=path.replace('//','/');if(path.indexOf("http")==0)
+path=path.replace(/http:\/(\w)/g,"http://$1").replace(/https:\/(\w)/g,"https://$1");return path;},insertCSS:function(path,media){media=media?media:'screen';document.write(' <link rel="stylesheet" type="text/css" media="'+media+'" href="'+path+'" /> ');}}
+JAWR.ResourceBundle=function(name,prefix,itemPathList,ieExpression,alternateProductionURL){this.name=name;this.prefix=prefix;this.itemPathList=itemPathList;this.ieExpression=ieExpression;this.alternateProductionURL=alternateProductionURL;}
+JAWR.ResourceBundle.prototype.belongsToBundle=function(path){if(path==this.name)
+return true;if(!this.itemPathList)
+return false;for(var x=0;x<this.itemPathList.length;x++){if(this.itemPathList[x]==path)
+return true;}
+return false;}
+JAWR.app_context_path='/SSOCore';JAWR.loader.mapping='https://acw.elsevier.com/ACW';(function(){function r(n,p,i,ie,aU){return new JAWR.ResourceBundle(n,p,i,ie,aU);}
+JAWR.loader.jsbundles=[r("/bundles/jcars.js","/563036366/",["/cars/script/jcars.js"]),r("/bundles/jquery.js","/N587762021/",["/cars/script/jquery-1.9.1.js","/cars/script/jquery-migrate-1.2.1.min.js","/cars/script/jquery-ui.js"]),r("/bundles/jqueryjcars.js","/N2034827169/",["/cars/script/jquery-1.9.1.js","/cars/script/jquery-migrate-1.2.1.min.js","/cars/script/jquery-ui.js","/cars/script/jcars.js"]),r("/bundles/jquery-ui.js","/95366285/",["/cars/script/jquery-ui.js"])];JAWR.loader.cssbundles=[r("/bundles/jcars.css","/361226261/",["/cars/css/jcars.css"]),r("/bundles/oauth.css","/N877962196/",["/static/css/oauth.css","/static/css/candidatePath.css"]),r("/bundles/ssoadmin.css","/1797120987/",["/css/sso_core_admin.css"]),r("/bundles/cars.css","/1451875136/",["/css/cars/cars_common.css"]),r("/css/bootstrap.min.css","/N1902589680/")];JAWR.loader.cssmapping='https://acw.elsevier.com/ACW';})();

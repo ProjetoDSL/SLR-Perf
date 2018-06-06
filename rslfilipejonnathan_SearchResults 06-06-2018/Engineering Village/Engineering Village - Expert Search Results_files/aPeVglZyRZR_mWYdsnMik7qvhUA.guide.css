@@ -1,0 +1,119 @@
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw {
+  /* --- Selectors from Global CSS --- */
+  /* -- Pointer at edge of tooltip -- */
+  /* -- Template-specific CSS overrides */
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-container_ {
+  /* -- Guide border, shadow, background, etc. -- */
+  border: 1px solid #E9711C;
+  background-color: white;
+  padding: 12px;
+  color: #666;
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: 300;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-container_ ._pendo-guide-content_ {
+  /* -- Content area -- use for font attributes, padding, etc. */
+  text-align: left;
+  padding: 0;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-container_ ._pendo-close-guide_ {
+  /* Close guide icon */
+  display: inline;
+  font-size: 28px;
+  font-weight: 100;
+  top: 6px;
+  right: 15px;
+  color: #007398;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-container_ ._pendo-close-guide_:hover {
+  /* Close guide icon hover effects*/
+  color: #E9711C;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow_,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border_ {
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border-style: solid;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-top_,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-top_ {
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-left_,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-left_ {
+  border-left: 0;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-right_,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-right_ {
+  border-right: 0;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-bottom_,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-bottom_ {
+  border-bottom: 0;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow_ {
+  z-index: 100;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-top_ {
+  border-bottom-color: #fff;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-left_ {
+  border-right-color: #fff;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-right_ {
+  border-left-color: #fff;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-bottom_ {
+  border-top-color: #fff;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-top_ {
+  border-bottom-color: #E9711C;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-left_ {
+  border-right-color: #E9711C;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-right_ {
+  border-left-color: #E9711C;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw ._pendo-guide-arrow-border-bottom_ {
+  border-top-color: #E9711C;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw h1 {
+  font-size: 1.35rem;
+  margin: 0;
+  padding: 5px 0;
+  line-height: 1rem;
+  font-weight: bold;
+  color: #505050;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw p {
+  font-size: 1.0rem;
+  line-height: 140%;
+  color: #505050;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw a,
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw button {
+  color: #007398;
+  cursor: pointer;
+}
+#_pendo_g_V5f7t54EMWp2iyMb_axurlGp7sw a:hover {
+  text-decoration: underline;
+  color: #E9711C;
+}

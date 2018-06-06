@@ -1,0 +1,495 @@
+var carsResponseState = false;
+var carsoverride = carsoverride || {
+	applyGenericStyles : function() {
+		$(".CARS_panelClass input[type='submit']").addClass("ev-button-medium-primary");
+	},
+	applyPageStyles : function(pageid) {
+		if (!pageid || typeof pageid == 'undefined') return;
+		carsResponseState = true;
+		switch (pageid) {
+		case "login-full-panel" : 
+			window.document.title = "Engineering Village - Login";
+			$('#login-full-panel').hide();
+			$('#msgDiv').next().remove();
+			$('#login-full-panel').addClass('displayNone');
+			$('#login-full-panel').css("width","100%");
+			$('#ev-header-icons').css('padding-top','2.25rem');
+			$('#login-full-panel, #login-full-panel div, #login-full-panel a, #login-full-panel span').removeAttr('displaystyle');
+			$('#errorDiv div').removeClass('CARS_red CARS_bold').addClass('errorCarsDisplay');
+			$('#login-full-group').addClass('row').wrapAll('<div class="cars-login-content-wrapper">');
+			$('#logingroup').addClass('col-md-6');
+			$('#inst-org-remote-social-group').addClass('col-md-6');
+			var registerObj = $('#registergroup a#registerForm');
+			if($('#errorDiv .errorCarsDisplay').length){
+				$('#logingroup .CARS_groupTitle').addClass('displayNone');
+			}else{
+				$('#logingroup .CARS_groupTitle').addClass('displayNone');
+				if (/force/.test(location.search)) {
+				  registerObj.html('create an account');
+				  $('#msgDiv').append('<div class="loginFullHeader"><h2>This account requires users to be individually identifiable. Please login (below) or '+''+'</h2></div>');
+          $('#msgDiv h2').append(registerObj); 
+          $('#msgDiv h2').append(' in order to access Engineering Village.'); 
+				} else {
+				  registerObj.html('Create account');
+				  $('#msgDiv').append('<div class="loginFullHeader"><h2>To use this feature, login below or '+''+'</h2></div>');
+				  $('#msgDiv h2').append(registerObj); 
+				}
+			}
+			$('#registergroup').remove();
+			$('#logingroup .CARS_red').remove();
+			$('#inst-org-remote-social-group .CARS_groupTitle').wrapInner('<h3></h3>'); // really need to user headers for accessibility
+			$('#login-remember-group').addClass('row'); 
+			$('#login-full-panel #login_rem_check').parent().addClass('col-md-8 checkbox ev-checkbox-small');
+			$('#login-full-panel #login_rem_check').addClass('ev-checkbox-input'); 
+			$('#login-full-group input[type="checkbox"] + label').addClass('ev-checkbox-label'); 
+			$('#login-full-panel #login_submit_btn').addClass('col-md-4'); 
+			$('#login-full-panel #login_submit_btn input[type="submit"]').attr('id', 'loginfull_submit_button_element');
+			$('#login_forgot_pass span').addClass('sr-only'); 
+			$('#registerForm span').addClass('sr-only'); 
+			//$('.cars-login-content-wrapper').parent().addClass('displayNone'); 
+			$('#logingroup #username-input, #logingroup #password-input').addClass('ev-text-input-large');
+			$('#logingroup #username-input label, #logingroup #password-input label').addClass('ev-text-input-label');
+			$('#logingroup #username-input input, #logingroup #password-input input').addClass('ev-text-input-field');
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#login-full-panel').show();
+			$('#cars-response').show();
+			
+			break;
+		case "path-choice-panel" :
+			window.document.title = "Engineering Village - Choose organization";
+			$('#path-choice-panel').hide();
+			$('#reg-menu-li').remove();
+			$('#ev-header-icons').css('padding-top','2rem');
+			$('#path-choice-panel, #path-choice-panel div, #path-choice-panel a, #path-choice-panel span').removeAttr('displaystyle');
+			if($('#errorDiv').html().length > 0){
+				var errorObj = $('#errorDiv').detach();
+				$('#path-choice-panel').prepend(errorObj);
+			}else{
+				$('#errorDiv').remove();
+			}
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#path-choice-form').addClass('row');
+			$('#path-choice-top-text1').addClass('chooseOrgSubTitle1');
+			$('#path-choice-top-text2').addClass('chooseOrgSubTitle2');
+			$("#path-choice-items > div:nth-child(2) > span").addClass('chooseOrgSelector');
+			$('.chooseOrgSelector').parent().addClass('ev-radio-button-small');
+			$('#path-choice-form input[type="radio"]').addClass('ev-radio-button-input');
+			$('#path-choice-form input[type="radio"] + span').addClass('ev-radio-button-label'); // add bootstrap specify class to the checkbox
+			$('#path-choice-rememeber-me').parent().addClass('chooseOrg-rem-me checkbox ev-checkbox-small');
+			$('#path-choice-rememeber-me').addClass('ev-checkbox-input');
+			$('#path-choice-panel input[type="checkbox"] + label').addClass('ev-checkbox-label');
+			$('#path-choice-panel').show();
+			$('#cars-response').show();
+			break;
+		case "manra-setup-panel" :
+			window.document.title = "Engineering Village - Apply for remote access";
+			$('#manra-setup-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['manra-email']);
+			carsoverride.customEleValCheck(['manra-email']);
+			$('#manra-submit-btn input').after('<a href="/back/service.url" id="cancel" title="Cancel">Cancel</a>')
+			if($('#manra-setup-panel #manra-setup div:last:contains("Please enter your email address from the institution that offers you Engineering Village (e.g. name@university.edu)")').length > 0){
+				$('#manra-setup-panel #manra-setup div:last').addClass('remote-access-help');
+				$('#manra-setup-panel #manra-setup div:last').detach().insertBefore($('#manra-setup-panel #manra-submit #manra-submit-btn'));
+			}
+			$('#manra-setup-panel').show();
+			$('#cars-response').show();
+			break;
+		case "forgot-pass-panel":
+			window.document.title = "Engineering Village - Forgotten username or password";
+			$('#forgot-pass-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['forgot-pass-email']);
+			$('#forgot-pass-panel').show();
+			$('#cars-response').show();
+			break;
+		case "reset-pwd-panel" :
+			window.document.title = "Engineering Village - Reset password";
+			$('#reset-pwd-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['changePass-newPass','changePass-cnfmNewPass']);
+			$('#reset-pwd-panel').show();
+			$('#cars-response').show();
+			break;
+		case "reset-pwd-expired-panel" :
+			$('#reset-pwd-expired-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#reset-pwd-expired-panel').show();
+			$('#cars-response').show();
+			break;
+		case "inst-choice-panel" :
+			window.document.title = "Engineering Village - Login via your institution";
+			$('#inst-choice-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#inst_srch label').addClass('ev-text-input-label sr-only');
+			$('#inst_srch input').addClass('ev-text-input-field ev-text-input-field search-word');
+			$('#inst_srch').addClass('ev-text-input-large');
+			$('#inst_srch input').attr("placeholder", "Search for your institution...");
+			$('#inst_srch input').attr("title", $('#inst-choice-autocomplete label').text());
+			$('#fed_id').select2({minimumResultsForSearch: Infinity, width: '100%'});
+			
+			$('#inst-choice-panel').show();
+			$('#cars-response').show();
+			break;
+		case "pwd-only-panel" :
+			$('#pwd-only-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['password-input']);
+			if($('#pwd-only-panel #passwordgroup form').find('div:first:contains("required field")').length){
+				$('#pwd-only-panel #passwordgroup form').find('div:first').remove();
+			}
+			$('#pwd-only-panel').show();
+			$('#cars-response').show();
+			break;
+		case "email-sent-panel" :
+			$('#email-sent-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#email-sent-panel').show();
+			$('#cars-response').show();
+			break;
+		case "strng-pwd-panel" :
+			$('#strng-pwd-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#strng-pwd-panel').show();
+			$('#cars-response').show();
+			break;
+		case "chng-pwd-success-panel" :
+			$('#chng-pwd-success-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#chng-pwd-success-panel').show();
+			$('#cars-response').show();
+			break;
+		case "edit-profile-panel" :
+			window.document.title = "Engineering Village - Modify personal details and preferences";
+			$('#edit-profile-panell').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('[for=job_title]').parent().attr('id','edit-job-titleName');
+			var inputs =[
+			               'edit-profile-firstname',
+			               'edit-profile-familyname',
+			               'edit-profile-email-address',
+			               'edit-job-titleName',
+			               'edit-profile-phone',
+			               'edit-profile-addr1',
+			               'edit-profile-addr2',
+			               'edit-profile-addr3',
+			               'edit-profile-city',
+			               'edit-profile-zip',
+			               'edit-profile-alt-state',
+			               'edit-profile-org-name'
+			              ];
+			carsoverride.customInputs(inputs);
+			carsoverride.customSelection(['country','state_us_canada','user_role']);
+			
+			$('#edit-profile-subarea-checkbox span').attr('class','checkbox ev-checkbox-small');
+			$('#edit-profile-subarea-checkbox span label input').unwrap()
+			$('#edit-profile-subarea-checkbox span').each(function(i, v) {
+    			$(v).contents().eq(0).attr({'id':i,'class':'ev-checkbox-input'});
+    			$(v).contents().eq(1).wrap('<label class="ev-checkbox-label" for="'+i+'"/>')
+			});
+			
+			$('#edit-profile-marketing-check').attr('class','ev-checkbox-input').wrapAll('<div class="checkbox ev-checkbox-small" id="edit-profile-marketing-checkBox"></div>');
+			$('#edit-profile-marketing-checkBox').append('<label for="edit-profile-marketing-check" class="ev-checkbox-label"></label>');
+			
+			$('#edit-profile-user-agreement-checkbox').attr('class','ev-checkbox-input').wrapAll('<div class="checkbox ev-checkbox-small" id="edit-profile-user-agreement-checkboxBox"></div>')
+			$('#edit-profile-user-agreement-checkboxBox').append($('label[for="edit-profile-user-agreement-checkbox"]').attr('class','ev-checkbox-label'));
+			
+			$('#edit-profile-marketing-check_link').addClass('collapsed');
+			$('#edit-profile-marketing-check_link').contents().attr('title','');
+			$('#edit-profile-marketing-check_link').contents().eq(1).after('<span class="ss-navigateup"></span>');
+			carsoverride.customEleValCheck(inputs);
+			$('#edit-profile-panell').show();
+			$('#cars-response').show();
+			break;
+		case "register-panel" :
+			window.document.title = "Engineering Village - Register";
+			$('#register-panel').hide();
+			if($('.CARS_panelTitle').text() !=="Activate Personalization"){$('#login-menu-li').hide()}
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('[for=job_title]').parent().attr('id','register-job-titleName');
+			var inputs =[
+			               'register-firstname',
+			               'register-familyname',
+			               'register-email-address',
+			               'register-password',
+			               'register-job-titleName',
+			               'register-phone',
+			               'register-addr1',
+			               'register-addr2',
+			               'register-addr13',
+			               'register-city',
+			               'register-zip',
+			               'register-alt-state',
+			              ];
+			carsoverride.customInputs(inputs);
+			carsoverride.customSelection(['country','state_us_canada','user_role'])
+			
+			$('#register-subarea-checkbox span').attr('class','checkbox ev-checkbox-small');
+			$('#register-subarea-checkbox span label input').unwrap()
+			$('#register-subarea-checkbox span').each(function(i, v) {
+    			$(v).contents().eq(0).attr({'id':i,'class':'ev-checkbox-input'});
+    			$(v).contents().eq(1).wrap('<label class="ev-checkbox-label" for="'+i+'"/>')
+			});
+			
+			$('#register-marketing-check').attr('class','ev-checkbox-input').wrapAll('<div class="checkbox ev-checkbox-small" id="register-marketing-checkBox"></div>')
+			$('#register-marketing-checkBox').append('<label for="register-marketing-check" class="ev-checkbox-label"></label>')
+			
+			$('#register-user-agreement-checkbox').attr('class','ev-checkbox-input').wrapAll('<div class="checkbox ev-checkbox-small" id="register-user-agreement-check"></div>')
+			$('#register-user-agreement-check').append($('label[for="register-user-agreement-checkbox"]').attr('class','ev-checkbox-label'));
+			
+			$('#register-marketing-check_link').addClass('collapsed');
+			$('#register-marketing-check_link').contents().attr('title','');
+			$('#register-marketing-check_link').contents().eq(1).after('<span class="ss-navigateup"></span>');
+			
+			$('#register-show-link').addClass('collapsed');
+			$('#register-show-link').contents().eq(1).after('<span class="ss-navigateup"></span>');
+			
+			var groupTitle = $('#register-email-pass-group .CARS_groupTitle'), emailText=$('#register-email-pass-group #register-email-text'), emailAddr=$('#register-email-pass-group label[for=email_address]'); 
+			groupTitle.text(groupTitle.text().replace("-",""));
+			emailText.text(emailText.text().replace("-",""));
+			emailAddr.text(emailAddr.text().replace("-",""));
+			
+			carsoverride.customEleValCheck(inputs);
+			$('#register-panel').show();
+			$('#cars-response').show();
+			break;
+		case "regid-redemption-panel" :
+			window.document.title = "Engineering Village - Registration ID redemption";
+			$('#regid-redemption-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['regid-redemption-id','regid-redemption-password']);
+			$('#regid-redemption-panel').show();
+			$('#cars-response').show();
+			break;
+		case "loginPage" :
+			$('#loginPage').hide();
+			$('.headerToolbar .pull-left').html($('#loginPage .header1').text()); 
+			$('#loginPage .header1').remove();
+			$('#loginPage').show();
+			$('#cars-response').show();
+			break;
+		case "regid-assoc-panel" :
+			$('#regid-assoc-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#regid-assoc-group').addClass('row').wrapAll('<div class="regid-assoc-content-wrapper">');
+			$('#regid-assoc-login').addClass('col-md-6');
+			$('#regid-assoc-inst-remote').addClass('col-md-6');
+			$('#regid-assoc-register-group').addClass('col-md-6');
+			$('#regid-assoc-register-group .register_tz').remove();
+			$('#regid-assoc-register-group a').html("Create account");
+			carsoverride.customInputs(['regid-assoc-username','regid-assoc-password']);
+			$('#regid-assoc-register-group .register_tz').remove();
+			
+			$('#regid-assoc-rem-login').addClass('row'); 
+			$('#regid-assoc-rem-login #regid-assoc-rememb-check').parent().addClass('col-md-8 checkbox ev-checkbox-small');
+			$('#regid-assoc-rem-login #regid-assoc-rememb-check').addClass('ev-checkbox-input');
+			var remLable=$('#regid-assoc-rem-login input[type="checkbox"] + label');
+			remLable.addClass('ev-checkbox-label');
+			remLable.html(remLable.text().replace("on this computer","")); 
+			$('#regid-assoc-rem-login #regid-assoc-submit-btn').addClass('col-md-4'); 
+			$('#regid-assoc-register-group').insertAfter('#regid-assoc-login');
+			$('#regid-assoc-panel').show();
+			$('#cars-response').show();
+			break;
+		case "chng-pwd-panel" :
+			window.document.title = "Engineering Village - Change Password";
+			$('#chng-pwd-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			carsoverride.customInputs(['changePass-currPass','changePass-newPass','changePass-cnfmNewPass']);
+			$('#chng-pwd-panel').show();
+			$('#cars-response').show();
+			break;
+		case "settings-panel" :
+			window.document.title = "Engineering Village - Settings";
+			$('#settings-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#settings-panel').show();
+			$('#cars-response').show();
+			break;
+		case "dupe-email-panel" :
+			$('#dupe-email-panel').hide();
+			var title = $('#dupe-email-panel .CARS_panelTitle'), emailText=$('#dupe-email-panel #dupe-email-emailaddr-txt'), error=$('#dupe-email-panel #errorDiv .CARS_red'); 
+			emailText.text(emailText.text().replace("-",""));
+			error.text(error.text().replace(/e-mail/g,"email"));
+			carsoverride.titleUpdate(title.text().replace("-",""));
+			$('#dupe-email-panel').show();
+			$('#cars-response').show();
+			break;
+		case "reg-success-panel" :
+			window.document.title = "Engineering Village - Registration successful";
+			$('#reg-success-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			var content = $('#reg-success-panel #register-success-txt1');
+			content.text(content.text().replace("e-mail","email"));
+			$('#reg-success-panel').show();
+			$('#cars-response').show();
+			break;
+		case "act-pers-succ" :
+			$('#act-pers-succ').hide();
+			carsoverride.titleUpdate($('.CARS_groupTitle').text());
+			$('#activatePersonalizationSuccess').children()[3].innerHTML = 'If you need to update your profile information, please use the top right menu to select "Personal details" under "Settings".'
+			var continueDiv=$('#activatePersonalizationSuccess').children()[5];
+				continueDiv.innerHTML=continueDiv.innerHTML.replace('<a href="/home.url" displaystyle="">Continue</a>','<input type="button" style="float:right" title="Continue" aria-label="Continue" value="Continue" class="ev-button-medium-primary" onclick="location.href=\'/home.url\'">');
+			$('#act-pers-succ').show();
+			$('#cars-response').show();
+			break;
+		case "info-message-panel" :
+			$('#info-message-panel').hide();
+			$('.CARS_panelTitle').css("color","red");
+			$('#info-message-panel').show();
+			$('#cars-response').show();
+			break;
+		case "activate-personalize-panel":
+			$('#activate-personalize-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#activate-personalize-panel').show();
+			$('#cars-response').show();
+			break;
+		case "inaccessible-panel" :
+			$('#inaccessible-panel').hide();
+			carsoverride.titleUpdate($('.CARS_panelTitle').text());
+			$('#inaccess-home1').attr('href','/customer/settings.url')
+			$('#inaccessible-panel').show();
+			$('#cars-response').show();
+			break;
+		default:
+			carsResponseState = false;
+			break;
+		}
+	}, 
+	updateTextInput : function(event){
+        if (event != null) {
+			var keycode = event.keyCode;
+			if (keycode === 27) {
+				return ''
+			}
+		}
+		var input_fields = $(".ev-text-input-field");
+		for (var i = 0; i < input_fields.length; i++) {
+			var input_field = $(input_fields[i]);
+			if (input_field.is(":focus") || input_field.val() != "") {
+				input_field.parent().addClass("ev-text-input-active")
+			} else {
+				input_field.parent().removeClass("ev-text-input-active")
+			}
+		}	
+	},
+	customInputs : function(obj){
+		if($.isArray(obj)){
+			$.each(obj, function( i, v ) {
+				$('#'+v+' label').addClass('ev-text-input-label');
+				$('#'+v+' input').addClass('ev-text-input-field');
+				$('#'+v).addClass('ev-text-input-large');
+			});
+		}else{
+			carsoverride.customInputs([obj]);
+		}
+	},
+	customEleValCheck : function(obj){
+		if($.isArray(obj)){
+			$.each(obj, function( i, v ) {
+				if($('#'+v+' input').val()!=""){
+					$('#'+v).addClass('ev-text-input-active');
+					$('#'+v+' input').focus();
+				};
+			});
+		}else{
+			carsoverride.customEleValCheck([obj]);
+		}
+	},
+	customSelection : function(obj){
+		if($.isArray(obj)){
+			$.each(obj, function( i, v ) {
+				$('#'+v).select2({minimumResultsForSearch: Infinity, width: '100%'});
+			});
+		}else{
+			carsoverride.customSelection([obj]);
+		}
+	},
+	titleUpdate : function(title){
+		if(title !==""){
+			$('.CARS_panelTitle').remove();
+			$('#cars_title').html(title); 
+		}
+	},
+	init : function() {
+		$('body').on('keydown keyup click', carsoverride.updateTextInput);
+		$('body').on('change','input', carsoverride.updateTextInput);
+		this.updateTextInput(null);
+		// Apply generic styles for all CARS pages
+		this.applyGenericStyles();
+		
+		// Attempt to get the maing CARS "panel" from the template response. Use
+		// the ID element to apply specific styles
+		var pageid = $(".CARS_panelClass").attr("id");
+		$(".CARS_panelClass").each(function(idx) {
+			carsoverride.applyPageStyles($(this).attr("id"));
+		});
+		
+		// error message for accessibility on empty form submission
+		jQuery("body #loginfull_submit_button_element").on("click",function(e){
+			var errorCount = 0;
+			var focusInput = null;
+			jQuery("#errorMsgContainerAlert").remove();
+			var accessibileAlertDiv = jQuery('<div>',{
+				'id':'errorMsgContainerAlert',
+				'role':'alert',
+				'aria-atomic':'true',
+				'aria-live':'assertive'
+			});
+			
+			if(!jQuery("#logingroup #username").val()) {
+				accessibileAlertDiv.append("username field is empty");
+				errorCount++;
+				focusInput = jQuery('#logingroup #username');
+				if(jQuery('#userNameError').hasClass("displayNone")){
+					jQuery("#userNameError").removeClass("displayNone").insertAfter(jQuery('#logingroup #username-input'));
+				}
+			}else {
+				if(!jQuery('#userNameError').hasClass("displayNone")){
+					jQuery('#userNameError').addClass("displayNone");
+				}
+			}
+			if(!jQuery("#logingroup #password-input-password").val()){
+				accessibileAlertDiv.append("password field is empty");
+				errorCount++;
+				if(focusInput===null){
+					focusInput = jQuery('#logingroup #password-input-password');
+				}
+				if(jQuery('#passwordError').hasClass("displayNone")){
+					jQuery("#passwordError").removeClass("displayNone").insertAfter(jQuery('#logingroup #password-input'));
+				}
+			}else {
+				if(!jQuery('#passwordError').hasClass("displayNone")){
+					jQuery('#passwordError').addClass("displayNone");
+				}
+			}
+			if(errorCount > 0){
+				jQuery("body").prepend(accessibileAlertDiv);
+				focusInput.focus();
+				e.preventDefault();
+			}
+		});	
+		$('#register-marketing-group').on('click','a#register-marketing-check_link',function(){
+			$(this).toggleClass( "collapsed" );
+		});
+		$('#register-show-hide-settings-group').on('click','a#register-show-link',function(){
+			$(this).toggleClass( "collapsed" );
+		});
+		$('#edit-profile-marketing-group').on('click','a#edit-profile-marketing-check_link',function(){
+			$(this).toggleClass( "collapsed" );
+		});
+		$('#msgDiv').on('click','a#registerForm',function(event){
+			event.stopPropagation();
+			app.appChannel.trigger("ev:sitecatalyst","conversionDriverClick","ev:Create-account-link:click");
+			var commonPopupView = new CommonPopupView({
+			});
+			commonPopupView.show();
+			return false;
+		});
+	}
+}
+
+$(document).ready(function () {
+	carsoverride.init();
+});
