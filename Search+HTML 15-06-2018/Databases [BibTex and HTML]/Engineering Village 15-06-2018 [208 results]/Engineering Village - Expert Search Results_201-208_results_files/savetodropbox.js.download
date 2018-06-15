@@ -1,0 +1,92 @@
+$(document).ready(function(){
+	validationForDropbox();
+	$("input[name='downloadformat']").change(function(){
+		validationForDropbox();
+	});
+	$("#displayformat").change(function(){
+		validationForDropbox();
+	});
+});
+
+function validationForDropbox(){
+	var downloadformat = $('input[name="downloadformat"]:checked').val();
+	if (downloadformat == undefined || downloadformat == "" || downloadformat == "refworks") {
+		if (downloadformat == "refworks") {
+			$('#savetodrivemsg').html("Refworks not supported");
+		}else{
+			$('#savetodrivemsg').html("Select a download format");
+		}
+		return false;
+	}else{
+		$('#savetodrivemsg').html("");
+	}
+	return true;
+}
+
+function submitDropboxDL(){
+
+	if(!validationForDropbox()){
+		return false;;
+	}
+	var downloadformat = $('input[name="downloadformat"]:checked').val();
+	var baseaddress = $("input[name='baseaddress']").val();
+	var displaytype = $("input[name='displayformat']:checked").val();
+	var filenameprefix = $.trim($('#filenameprefix').val());
+	var summary = isSummarySelected();
+	var downloadUrl = constructDbxDownlodUrl(downloadformat,displaytype,filenameprefix, summary);
+	
+	var dropBoxPageUrl = 'https://'+baseaddress+'/delivery/download/dropbox.url?downloadformat='+downloadformat+'&filenameprefix='+filenameprefix+'&displayformat='+displaytype+'&dropBoxDownloadUrl='+escape(downloadUrl);
+	var new_window1 = window.open(dropBoxPageUrl, 'DropBox', "height=350,width=820,resizable=yes,scrollbars=yes");
+	new_window1.focus();
+	return false;
+}
+
+function constructDbxDownlodUrl(downloadformat,displaytype,filenameprefix,summary){
+	var docidlist = $("#docidlist").val();
+	var handlelist = $("#handlelist").val();
+	var folderid = $("#folderid").val();
+	//EV-5300
+	var sortBy= $("#sortBy").val();
+	var sortDirn= $("#sortDirn").val();
+	//EV-EV-5300
+	var downloadUrl = '/delivery/download/submit.url?usageOrigin='+$("#usageOriginFromDownload").val()+'&downloadMedium=dropbox&downloadformat='+downloadformat+'&displayformat='+displaytype;
+	if (docidlist && docidlist.length > 0)
+		downloadUrl += "&docidlist=" + docidlist;
+	if (handlelist && handlelist.length > 0)
+		downloadUrl += "&handlelist=" + handlelist;
+    if (folderid && folderid.length > 0)
+    	downloadUrl += "&folderid=" + folderid;
+    downloadUrl += "&filenameprefix=" + filenameprefix;
+  //EV-EV-5300
+    if (sortBy && sortBy.length > 0)
+    	downloadUrl += "&sortBy=" + sortBy;
+    if (sortDirn && sortDirn.length > 0)
+    	downloadUrl += "&sortDirn=" + sortDirn;
+  //EV-EV-5300
+    if(isSummaryAllowed()){
+   	  downloadUrl += "&summary=" + summary;
+    }
+    return downloadUrl;
+}
+
+function isSummaryAllowed(){
+	var docidlist = $("#docidlist").val();
+	var folderid = $("#folderid").val();
+	if(folderid){
+		return false;
+	}else if(docidlist){
+		return false;
+	}
+	return true;
+}
+
+function dbx_tooltip_show(tooltipId,event){
+    thistip = document.getElementById("savetodrivemsg");
+    thistip.style.visibility = 'visible';
+
+}
+
+function dbx_tooltip_hide(tooltipId){
+	thistip = document.getElementById("savetodrivemsg");
+    thistip.style.visibility = 'hidden';
+}

@@ -1,0 +1,822 @@
+
+
+/*Generic Styles start*/
+/*width start*/
+
+.CARS_panelClass *[displaystyle*=":widthverylarge"] {
+width:990px;
+}
+
+.CARS_panelClass *[displaystyle*=":widthextralarge"] {
+width:750px;
+}
+
+.CARS_panelClass *[displaystyle*=":widthlarge"] {
+width:600px;
+}
+
+.CARS_panelClass *[displaystyle*=":widthmedium"] {
+width:450px;
+}
+
+.CARS_panelClass *[displaystyle*=":bold"] {
+font-weight: bold;
+}
+
+.CARS_panelClass *[displaystyle*=":widthsmall"] {
+width:330px;
+}
+.CARS_panelClass *[displaystyle*=":widthverysmall"] {
+width:250px;
+}
+
+.CARS_panelClass *[displaystyle*=":red"] {
+color:#FF0000;
+} 
+
+.CARS_panelClass *[displaystyle*=":widthextrasmall"] {
+width:150px;
+}
+/*width end*/
+
+
+/*height start*/
+.CARS_panelClass *[displaystyle*=":heightsmall"] {
+    height:150px;
+}
+/* height end*/
+
+/*float start*/
+.CARS_panelClass *[displaystyle*=":right"] {
+    float:right;
+}
+.CARS_panelClass *[displaystyle*=":left"] {
+    float:left;
+}
+/*float end*/
+
+
+/*display start*/
+.CARS_panelClass *[displaystyle*=":background"] {
+background-color: #eee;
+}
+
+.CARS_panelClass *[displaystyle*=":backgroundnone"] {
+background-color: #fff;
+}
+
+.CARS_panelClass *[displaystyle*=":border"] {
+border:1px solid #9B9B9B;
+}
+
+.CARS_panelClass *[displaystyle*=":displaynone"] {
+    display:none;
+}
+
+.CARS_panelClass *[displaystyle*=":displayblock"] {
+    display:block;
+}
+
+.CARS_panelClass *[displaystyle*=":displayinline"] {
+    display:inline;
+}
+.CARS_panelClass *[displaystyle*=":displayinlineblock"] {
+    display:inline-block;
+}
+/*display end*/
+
+
+/*padding start*/
+.CARS_panelClass *[displaystyle*=":paddingsmall"] {
+padding: 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingR250"] {
+padding-right: 250px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingTBsmall"] {
+padding: 10px 0px;
+}
+.CARS_panelClass *[displaystyle*=":paddingL50"] {
+padding-left: 50px;
+}
+.CARS_panelClass *[displaystyle*=":paddingL5"] {
+padding-left: 5px;
+}
+.CARS_panelClass *[displaystyle*=":paddingR5"] {
+padding-right: 5px;
+}
+.CARS_panelClass *[displaystyle*=":paddingT5"] {
+padding-top: 5px;
+}
+.CARS_panelClass *[displaystyle*=":paddingB5"] {
+padding-bottom: 5px;
+}
+.CARS_panelClass *[displaystyle*=":paddingB10"] {
+padding-bottom: 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingL10"] {
+padding-left: 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingT10"] {
+padding-top: 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingR10"] {
+padding-right: 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingL120"] {
+padding-left: 120px;
+}
+
+.CARS_panelClass *[displaystyle*=":paddingRLsmall"] {
+padding: 0px 10px;
+}
+
+.CARS_panelClass *[displaystyle*=":padding0"] {
+padding: 0px;
+}
+
+/*padding end*/
+
+
+/*margin start*/
+.CARS_panelClass *[displaystyle*=":marginL120"] {
+margin-left: 120px;
+}
+.CARS_panelClass *[displaystyle*=":MarginL50"] {
+margin-left: 50px;
+}
+.CARS_panelClass *[displaystyle*=":marginB10"] {
+margin-bottom: 10px;
+}
+.CARS_panelClass *[displaystyle*=":marginT10"] {
+margin-top: 10px;
+}
+.CARS_panelClass *[displaystyle*=":marginL10"] {
+margin-left: 10px;
+}
+.CARS_panelClass *[displaystyle*=":marginR10"] {
+margin-right: 10px;
+}
+.CARS_panelClass *[displaystyle*=":marginL5"] {
+margin-left: 5px;
+}
+.CARS_panelClass *[displaystyle*=":marginR5"] {
+margin-right: 5px;
+}
+
+.CARS_panelClass *[displaystyle*=":marginT5"] {
+margin-top: 5px;
+}
+
+.CARS_panelClass *[displaystyle*=":marginB5"] {
+margin-bottom: 5px;
+}
+
+/*margin end*/
+
+
+/*font start*/
+.CARS_panelClass *[displaystyle*=":fontverysmall"] {
+font-size:8.5pt;
+}
+
+.CARS_panelClass *[displaystyle*=":bold"] {
+font-weight: bold;
+}
+
+.CARS_panelClass *[displaystyle*=":fontsmall"] {
+font-size:11px;
+}
+
+.CARS_panelClass *[displaystyle*=":fontmedium"] {
+font-size:16px;
+}
+/*font end*/
+
+/*clear start*/
+.CARS_panelClass *[displaystyle*=":clear"] {
+clear:both;
+}
+/*clear end*/
+
+/*others start*/
+.CARS_panelClass *[displaystyle*=":radiusshadow"] {
+border-radius: 5px 5px 5px 5px;
+box-shadow: 3px 3px 3px #CCCCCC;
+}
+
+.CARS_panelClass *[displaystyle*=":overflowauto"] {
+    overflow:auto;
+}
+
+.CARS_panelClass *[displaystyle*=":overflowhidden"] {
+    overflow:hidden;
+}
+
+.CARS_panelClass *[displaystyle*=":fontsmall"] {
+font-size:11px;
+}
+
+.CARS_panelClass *[displaystyle*=":verticalmiddle"] {
+vertical-align:middle;
+}
+
+.CARS_panelClass *[displaystyle*=":expandImage"] {
+    background-image: url("../../cars/images/login_expand.gif");
+    background-repeat: no-repeat;
+    height: 12px;
+    padding-right: 15px;
+    vertical-align: middle;
+    width: 10px;
+}
+
+
+.CARS_panelClass *[displaystyle*=":collapseImage"] {
+    background-image: url("../../cars/images/login_collapse.gif");
+    background-repeat: no-repeat;
+    height: 12px;
+    padding-right: 15px;
+    vertical-align: middle;
+    width: 10px;
+}
+
+
+.CARS_panelClass *[displaystyle*=":textcenter"]{
+	text-align:center;
+	
+}
+
+.CARS_panelClass *[displaystyle*=":bullet"] {
+    position:relative;
+    margin-left:20px;
+}
+
+.CARS_panelClass *[displaystyle*=":bullet"]:before {
+	position:absolute;
+    content:'\2022';
+    left:-12px;
+    top:-4px;
+    font-size:15pt;
+    color:#000000;
+}
+
+.CARS_panelClass *[displaystyle*=":circlebullet"] {
+    position:relative;
+    margin-left:50px;
+}
+
+.CARS_panelClass *[displaystyle*=":circlebullet"]:before {
+	position:absolute;
+    content:'\25CB';
+    font-size: 9pt;
+    left: -12px;
+    top: -1px;
+	color: #000000;
+}
+
+.CARS_panelClass *[displaystyle*=":squarebullet"] {
+    position:relative;
+    margin-left:70px;
+}
+
+.CARS_panelClass *[displaystyle*=":squarebullet"]:before {
+	position:absolute;
+    content:'\25AA';
+    left:-12px;
+    top:-4px;
+    font-size:15pt;
+    color:#000000;
+}
+
+.CARS_panelClass *[displaystyle*=":expandedinput"] input[type="text"], .CARS_panelClass select {
+	width:288px;
+}
+
+.CARS_panelClass *[displaystyle*=":ulstyle"] {
+    margin-left:0px;
+    padding: 0px;
+	list-style-type: none;
+}
+
+.CARS_panelClass *[displaystyle*=":liststyle"] {
+    float: left;
+    padding: 0px;
+}
+.CARS_panelClass *[displaystyle*=":hidespan"] {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  left: -1000px;
+} 
+
+/*others end*/
+
+
+/*Generic Styles start*/
+
+
+.CARS_panelClass input[type="text"],input[type="password"] {
+border-radius: 5px;
+border:1px solid #ccc;
+width:150px;
+}
+
+.CARS_panelClass form{
+	margin:0px;
+}
+
+
+.CARS_panelClass a{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	display:inline;
+	text-decoration:none;
+}
+
+.CARS_panelClass a:hover, .CARS_panelClass a:focus{
+	text-decoration:underline;
+}
+
+.CARS_panelTitle{
+font-weight: bold;
+font-size:1.3em;
+}
+
+.CARS_panelClass{
+font-family: Arial;
+font-size: 75%;
+padding-top: 10px;
+padding-left: 10px;
+}
+
+
+.CARS_subtitle{
+font-weight: bold;
+font-size: 1.1em;
+padding: 10px 0px 10px;
+}
+
+.CARS_groupTitle{
+font-weight:bold;   
+font-size: 1em;
+vertical-align: middle;
+padding: 5px;
+}
+
+.CARS_panelClass label{
+display:inline-block;  
+text-align: right;
+padding-top: 10px; 
+padding-bottom: 10px;
+}
+
+.CARS_panelClass label span{
+display: inline-block;
+width: 120px;
+padding-right:5px;
+}
+
+
+
+.CARS_panelClass select{
+width: 236px;
+}
+
+/*container width*/
+
+.CARS_veryLarge{
+width:970px;
+}
+
+.CARS_extraLarge{
+width:750px;
+}
+
+.CARS_large{
+width:600px;
+}
+
+.CARS_medium{
+width:450px;
+}
+
+.CARS_small{
+width:330px;
+}
+
+.CARS_extraSmall{
+width:150px;
+}
+
+
+
+
+/*height*/
+.CARS_smallHeight{
+height:150px;  
+overflow:hidden;
+}
+
+
+/*display*/
+
+.CARS_displayBlock{
+display: block;
+}
+
+.CARS_displayInline{
+display: inline;
+}
+
+.CARS_displayInline .CARS_displayNone{
+display:none;
+}
+
+.CARS_displayNone{
+display:none;
+}
+
+.CARS_displayInlineBlock{
+display: inline-block;
+}
+.CARS_clear{
+clear: both;
+}
+
+
+/*padding*/
+
+.CARS_padding10{
+padding:10px;
+}
+
+.CARS_paddingT5{
+padding-top:5px;
+}
+.CARS_paddingR5{
+padding-right:5px;
+}
+.CARS_paddingB5{
+padding-bottom:5px;
+}
+.CARS_paddingL5{
+padding-left:5px;
+}
+
+
+.CARS_paddingT10{
+padding-top:10px;
+}
+.CARS_paddingR10{
+padding-right:10px;
+}
+.CARS_paddingB10{
+padding-bottom:10px;
+}
+.CARS_paddingL10{
+padding-left:10px;
+}
+
+
+.CARS_paddingT15{
+padding-top:15px;
+}
+.CARS_paddingR15{
+padding-right:15px;
+}
+.CARS_paddingB15{
+padding-bottom:15px;
+}
+.CARS_paddingL15{
+padding-left:15px;
+}
+
+
+.CARS_paddingT20{
+padding-top:20px;
+}
+.CARS_paddingR20{
+padding-right:20px;
+}
+.CARS_paddingB20{
+padding-bottom:20px;
+}
+.CARS_paddingL20{
+padding-left:20px;
+}
+
+
+.CARS_padding5{
+padding:5px;
+}
+
+.CARS_padding10{
+padding:10px;
+}
+
+.CARS_padding15{
+padding:15px;
+}
+
+.CARS_padding20{
+padding:20px;
+}
+
+
+/*float*/
+
+.CARS_floatL{
+float:left;
+}
+
+.CARS_floatR{
+float:right;
+}
+
+
+/*color & background*/
+
+.CARS_backgroundStyle{
+background-color: #eee
+}
+
+.CARS_borderStyle{
+border:1px solid #9B9B9B;
+}
+
+.CARS_red{
+color: #FF0000;
+padding-left:5px;
+padding-right: 5px;
+}
+
+
+
+.CARS_expandImage{
+background-image: url("../../cars/images/login_expand.gif");
+background-repeat: no-repeat;
+height: 12px;
+padding-right: 15px;
+width: 10px;
+}
+
+.CARS_collapseImage{
+background-image: url("../../cars/images/login_collapse.gif");
+background-repeat: no-repeat;
+height: 12px;
+padding-right: 15px;
+width: 10px;
+}
+
+/*autocomplete*/
+
+#ui-id-1 {
+	list-style-type: none;
+	max-height: 200px;
+	max-width: 313px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-left: 0;
+	width: 313px !important;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	z-index:8;
+}
+
+#ui-id-2 {
+	list-style-type: none;
+	max-height: 200px;
+	max-width: 313px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-left: 0;
+	width: 313px !important;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	z-index:8;
+}
+
+
+#ui-loginId-1 {
+	list-style-type: none;
+	max-height: 200px;
+	max-width: 313px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-left: 0;
+	width: 313px !important;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	z-index:8;
+}
+
+.CARS_panelClass .ui-helper-hidden-accessible {
+	display:none !important;
+}
+
+.ui-menu .ui-menu-item {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.ui-menu-item{
+	/*margin-top: 6px !important;
+	margin-bottom: 6px !important;*/
+}
+
+.ui-menu-item:hover, .ui-menu-item:focus{
+	background: none repeat scroll 0 0 #AFC8E6;
+}
+
+.ui-menu-item-hover-no-results .ui-state-focus {
+	background: none !important;
+	cursor: default;
+	color: #858585;
+}
+
+.ui-menu-item a{
+	cursor: pointer;
+	font-family: Arial;
+	font-size: 12px;
+	padding: 6px 3px;
+	display: block;
+	font-weight: normal;
+	/*line-height: 1.5;*/
+	text-decoration: none;
+}
+
+ul.ui-menu .ui-menu-item a span.inst-login-link{
+	display:none;
+}
+
+ul.ui-menu .ui-menu-item a.ui-state-focus span.inst-login-link {
+	white-space:nowrap;
+    overflow:hidden;
+	background: url("../../static/images/LoginBox.png") scroll 0 0 transparent;
+	color: #e0e6ed;
+	padding:0px 5px 0px 5px;
+	display: inline-block;
+	font: bold 12px/21px Arial;	
+	text-align: center;
+	vertical-align: middle;	
+	margin-left:30px;
+	margin-right: 10px;
+	background-position:center; 
+}
+
+ul.ui-menu .ui-menu-item a span.login-inst-login-link{
+	display:none;
+}
+
+ul.ui-menu .ui-menu-item a.ui-state-focus span.login-inst-login-link {
+	white-space:nowrap;
+    overflow:hidden;
+	background: url("../../static/images/LoginBox.png") scroll 0 0 transparent;
+	color: #e0e6ed;
+	padding:0px 5px 0px 5px;
+	display: inline-block;
+	font: bold 12px/21px Arial;	
+	text-align: center;
+	vertical-align: middle;	
+	margin-left:30px;
+	margin-right: 10px;
+	background-position:center; 
+}
+
+ul.ui-menu .ui-menu-item a span.inst-name {
+	display: inline-block;
+	overflow-x: hidden;
+	vertical-align: middle;
+	color: #000000;
+	width: 200px;
+}
+
+.ui-state-focus{
+	color:white;
+	background:#AFC8E6;
+	outline:none;
+}
+
+ul.ui-menu .ui-menu-item a span.login-inst-name {
+	display: inline-block;
+	overflow-x: hidden;
+	vertical-align: middle;
+	color: #000000;
+	width: 200px;
+}
+
+#social_icons_group,#social_icons_group table,#social_icons_group table > table,
+#social_icons_group_two,#social_icons_group_two table,#social_icons_group_two table > table {
+height: auto !important;
+width: auto !important;
+padding-top: 10px;
+}
+
+.CARS_bold {
+	font-weight: bold;
+}
+
+.CARS_panelClass a > img {
+    padding-right: 15px !important;
+    border:none;
+}
+
+.CARS_panelClass span label{
+    padding: 0px;
+}
+
+.CARS_panelClass *[displaystyle*=":spanformstyle"] form {
+    display: inline-block;
+}
+
+.CARS_panelClass *[displaystyle*=":labelspanstyle"] label span {
+    display: inline-block;
+	padding: 0px;
+	width: auto;
+	
+}
+
+.CARS_panelClass *[displaystyle*=":textleft"]{
+	text-align:left;
+	
+}
+
+.CARS_panelClass *[displaystyle*=":verticaltop"]{
+	vertical-align:top;
+	
+}
+.CARS_panelClass *[displaystyle*=":posabsolute"]{
+	position:absolute;
+	
+}
+.CARS_panelClass *[displaystyle*=":marginR65"]{
+	margin-right:65px;
+	
+}
+.CARS_panelClass *[displaystyle*=":right0"]{
+	right:0px;
+	
+}
+.CARS_panelClass *[displaystyle*=":marginT15"]{
+	margin-top:15px;
+	
+}
+
+.CARS_panelClass *[displaystyle*=":paddingT30"]{
+	padding-top:30px;
+	
+}
+.CARS_panelClass *[displaystyle*=":paddingB30"]{
+	padding-bottom:30px;
+	
+}
+.CARS_panelClass *[displaystyle*=":BorderBottom"]{
+	border-bottom:1px solid #9B9B9B;
+	
+}
+.CARS_panelClass *[displaystyle*=":posrelative"] {
+    position: relative;
+    
+}
+.CARS_panelClass *[displaystyle*=":top65"] {
+    top: 65px;
+    
+}
+
+.CARS_panelClass *[displaystyle*=":left220"] {
+    left: 220px;
+    
+}
+
+#register-tz{
+	width: 608px;
+	word-wrap: break-word;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #333333;
+	font-size: 12px; 
+	font-family: Arial;
+	font-weight: regular;
+	
+}

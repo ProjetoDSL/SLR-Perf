@@ -1,0 +1,164 @@
+$(document).ready(function(){
+	loadScript('https://apis.google.com/js/platform.js', startLoadingDriveButton);
+});
+
+
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if (script.readyState){  //IE
+        script.onreadystatechange = function(){
+            if (script.readyState == "loaded" ||
+                    script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    } else {  //Others
+        script.onload = function(){
+        	callback();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+}
+
+function startLoadingDriveButton(){
+	constructDriveButton();
+}
+
+function constructDriveButton(){
+		var downloadformat = $('#downloadformat').val();
+		var displaytype = $("#displayformat").val();
+		var filenameprefix = $("#filenameprefix").val();
+		var summary = $("#summary").val();
+		if (downloadformat == undefined || downloadformat == "" || downloadformat == "refworks") {
+			if (downloadformat == "refworks") {
+				$('#savetodrivemsg').html("Refworks not supported");
+			}else{
+				$('#savetodrivemsg').html("Select a download format");
+			}
+			$('#savetodrive-div').empty();
+			$('#savetodrive-div').html('<a id="savetodrivebutton" onmouseover="tooltip_show();" onmouseout="tooltip_hide();" title="Save to Google Drive" href="#"><img src="/static/images/savetodriveoriginal.jpg"></a>');
+		}else{
+			$('#savetodrivemsg').html("");
+			var fileName = creatFileName(downloadformat,displaytype,filenameprefix);
+			$('#savetodrive-div').empty();
+			gapi.savetodrive.render('savetodrive-div', {
+		            src: constructDownlodUrl(downloadformat,displaytype,filenameprefix,summary),
+		            filename: fileName,
+		            sitename: 'Engineering Village'
+		          });
+		}
+}
+
+function constructDownlodUrl(downloadformat,displaytype,filenameprefix,summary){
+	var docidlist = $("#docidlist").val();
+	var handlelist = $("#handlelist").val();
+	var folderid = $("#folderid").val();
+	//EV-5300-appending the sortBy and sortDirn
+	var sortBy= $("#sortBy").val();
+	var sortDirn= $("#sortDirn").val();
+	
+	var usageOriginForGoogleDelivery = $("#usageOrigin").val();
+	var usageZoneForGoogleDelivery = $("#usageZone").val();
+	var downloadUrl = '/delivery/download/submit.url?usageZone='+usageZoneForGoogleDelivery+'&usageOrigin='+usageOriginForGoogleDelivery+'&downloadformat='+downloadformat+'&displayformat='
+	+displaytype+'&filenameprefix='+filenameprefix+"&sortBy="+sortBy+"&sortDirn="+sortDirn;
+	if (docidlist && docidlist.length > 0)
+		downloadUrl += "&docidlist=" + docidlist;
+	if (handlelist && handlelist.length > 0)
+		downloadUrl += "&handlelist=" + handlelist;
+    if (folderid && folderid.length > 0)
+    	downloadUrl += "&folderid=" + folderid;
+    if(isSummaryAllowed()){
+    	downloadUrl += "&summary=" + summary;
+    }
+    downloadUrl += "&downloadMedium=googledrive";
+    return downloadUrl;
+}
+
+function isSummaryAllowed(){
+	var docidlist = $("#docidlist").val();
+	var folderid = $("#folderid").val();
+	if(folderid){
+		return false;
+	}else if(docidlist){
+		return false;
+	}
+	return true;
+}
+
+function creatFileName(downloadformat,displaytype,filenameprefix){
+	if(filenameprefix == null || filenameprefix.trim().length==0 || filenameprefix.trim().length<3){
+		filenameprefix = "Engineering_Village";
+	}
+	var filename = "";
+	filename += filenameprefix;
+	filename += '_';
+	if(downloadformat == 'bib'){
+		filename += 'BIB';
+	}else if(downloadformat == 'ris'){
+		filename += 'RIS';
+	}else{
+	  filename += displaytype;
+	}
+	
+	filename += '_';
+	var dt = new Date();
+	filename += (dt.getMonth() + 1 );
+	filename += '-';
+	filename += dt.getDate();
+	filename += '-';
+	filename += dt.getFullYear();
+	filename += '_';
+	filename += dt.getHours();
+	filename += dt.getMinutes();
+	filename += dt.getMilliseconds();
+	
+	if(downloadformat == 'ascii'){
+		filename += '.txt';
+	}else if(downloadformat == 'excel'){
+		filename += '.xlsx';
+	}else{
+		filename += '.'+downloadformat;
+	}
+	return filename;
+}
+
+
+function tooltip_show(tooltipId,event){
+    thistip = document.getElementById("savetodrivemsg");
+    thistip.style.visibility = 'visible';
+
+}
+
+function tooltip_hide(tooltipId){
+	thistip = document.getElementById("savetodrivemsg");
+    thistip.style.visibility = 'hidden';
+}
+
+function submitGoogleDriveDL(){
+	var downloadformat = $('input[name="downloadformat"]:checked').val();
+	var displaytype = $('input[name="displayformat"]:checked').val();
+	var docidlist = $("#docidlist").val();
+	var handlelist = $("#handlelist").val();
+	var folderid = $("#folderid").val();
+	var baseaddress = $("input[name='baseaddress']").val();
+	var filenameprefix = $("#filenameprefix").val();
+	var summary = isSummarySelected();
+	var sortBy= $("#sortBy").val();
+	var sortDirn= $("#sortDirn").val();
+	var googleDrivePageUrl = 'https://'+baseaddress+'/delivery/download/googledrive.url?usageOrigin='+$("#usageOriginFromDownload").val()+'&downloadformat='+downloadformat+'&displayformat='+displaytype+'&filenameprefix='+filenameprefix;
+
+	if (docidlist && docidlist.length > 0)
+		googleDrivePageUrl += "&docidlist=" + docidlist;
+	if (handlelist && handlelist.length > 0)
+		googleDrivePageUrl += "&handlelist=" + handlelist;
+    if (folderid && folderid.length > 0)
+    	googleDrivePageUrl += "&folderid=" + folderid;
+    googleDrivePageUrl += "&summary=" + summary+"&sortBy="+sortBy+"&sortDirn="+sortDirn;
+
+	var new_window1 = window.open(googleDrivePageUrl, 'GoogleDrive', "height=350,width=820,resizable=yes,scrollbars=yes");
+	new_window1.focus();
+}

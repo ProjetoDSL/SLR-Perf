@@ -1,0 +1,151 @@
+$(document).ready(function() {
+  // TODO: add imports from other files when we go modular with JS code
+  // Example: var app=require("app");
+  // 
+  if (app.userSession.get("user").webUserId) {
+    var warningLength;
+    var idleAfter;
+    var isIndividual = app.userSession.isIndividuallyAuthenticated();
+    var hours = 8;
+    var buttons = {
+      'Continue session' : function() {
+        $(".ui-timeout-dialog-titlebar-close").click();
+      }
+    };
+
+    var iMinutes = app.model.get("rootApplicationProperties")["session.timeout.individual"];
+    if (isIndividual) {
+      warningLength = app.model.get("rootApplicationProperties")["session.timeout.display.time.individual"];
+      idleAfter = iMinutes - warningLength;
+    } else {
+      warningLength = app.model.get("rootApplicationProperties")["session.timeout.display.time.anonymous"];
+      idleAfter = app.model.get("rootApplicationProperties")["session.timeout.anonymous"]
+          - warningLength;
+      hours = iMinutes / 3600;
+
+      buttons["Create account"] = function() {
+        $(".ui-timeout-dialog-titlebar-close").click();
+        new CommonPopupView({}).show();
+        app.appChannel.trigger("ev:sitecatalyst","conversionDriverClick","ev:ev-timeout-register:click");
+        app.appChannel.trigger("ev:sitecatalyst","registraionStart");
+      };
+
+      buttons["Login"] = function() {
+        $(".ui-timeout-dialog-titlebar-close").click();
+        Backbone.Radio.channel("sessionsettingschannel").request(
+          "sessionsettings:setWithOptions",
+          {
+            nextUrl : window.location.href
+          },
+          function() {
+            Backbone.Radio.channel("sessionsettingschannel")
+                .request("sessionsettings:setLocal", {
+                  nextUrl : window.location.href
+                });
+            window.location.href = "/customer/authenticate/loginfull.url";
+          },
+          function() {
+            window.location.href = "/customer/authenticate/loginfull.url";
+          });
+      };
+    }
+
+    var template = _.template($("#idle-dialog-template").html(), {
+      variable : 'data'
+    })({
+      isIndividual : isIndividual,
+      hours : hours
+    });
+    $("body").append(template);
+
+    // Create a dialog box based on "idle-dialog" element
+    // above
+    $("#idle-dialog").dialog({
+      autoOpen : false,
+      modal : true,
+      width : 400,
+      minHeight : 100,
+      closeOnEscape : false,
+      draggable : false,
+      resizable : false,
+      closeText : "x",
+      // Add Continue button
+      buttons : buttons,
+
+      classes : {
+        "ui-dialog" : "modal-content-wrapper ev-nexus-sans ui-timeout-dialog",
+        "ui-dialog-title" : "ui-timeout-dialog-title",
+        "ui-dialog-titlebar" : "ui-timeout-dialog-titlebar",
+        "ui-dialog-buttonpane" : "ui-timeout-dialog-buttonpane",
+        "ui-dialog-titlebar-close" : "close ui-timeout-dialog-titlebar-close",
+        "ui-dialog-buttonset" : "ui-timeout-dialog-buttonset",
+        "ui-dialog-content" : "ui-timeout-dialog-content"
+      }
+    });
+
+    // workaround for being unable to set close button text
+    $(".ui-timeout-dialog-titlebar-close").html('&times;');
+    // add aria-label for accessibility
+    $(".ui-timeout-dialog-titlebar-close").attr("aria-label", "Close");
+
+    // fix the button styling
+    var buttonContinue = $(".ui-timeout-dialog-buttonset button:first");
+    buttonContinue.attr("id", "ev-timeout-continue-session");
+    buttonContinue.addClass("ev-button-small-secondary");
+    if (!isIndividual) {
+      var buttonRegister = buttonContinue.next();
+      buttonRegister.attr("id", "ev-timeout-register");
+      buttonRegister.addClass("ev-button-medium-primary");
+
+      var buttonLogin = buttonRegister.next();
+      buttonLogin.attr("id", "ev-timeout-login");
+      buttonLogin.addClass("ev-button-small-tertiary")
+      buttonLogin.after("<span>&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;</span>");
+    }
+
+    // cache a reference to the countdown element so we
+    // don't have to query the
+    // DOM for it on each ping.
+    var $countdown = $("#idle-dialog-countdown");
+
+    // start the idle timer plugin
+    $
+        .idleTimeout(
+            '#idle-dialog',
+            '.ui-timeout-dialog-titlebar-close',
+            {
+              warningLength : warningLength, // Seconds idle dialog is
+                                              // shown
+              idleAfter : idleAfter, // Seconds before idle dialog
+                                      // appears
+              pollingInterval : 120, // Seconds between keep alive
+                                      // calls
+              keepAliveURL : '/HealthCheck.url?keepalive=true',
+              serverResponseEquals : 'OK',
+              AJAXTimeout : 15000,
+              titleMessage : 'Session expires in %m | ',
+              onTimeout : function() {
+                window.location = "/application/checksessionstatus?resourcetype=redirect&isIndividual="+app.userSession.isIndividuallyAuthenticated();
+              },
+              onAbort : function() {
+                window.location = "/application/checksessionstatus?resourcetype=redirect&isIndividual="+app.userSession.isIndividuallyAuthenticated();
+              },
+              onIdle : function() {
+                $(this).data("originalTitle", document.title);
+                $(this).dialog("open");
+              },
+              onCountdown : function(counter) {
+                var minutes = Math.ceil(counter / 60);
+                $countdown
+                    .html(counter > 60 ? ("<span style='font-weight:bold'>"
+                        + minutes + "</span> minute" + (minutes > 1 ? "s"
+                        : ""))
+                        : "<span style='font-weight:bold'>" + counter
+                            + "</span> seconds"); // update the counter
+              },
+              onResume : function() {
+                document.title = $(this).data("originalTitle");
+              }
+            });
+  }
+});
