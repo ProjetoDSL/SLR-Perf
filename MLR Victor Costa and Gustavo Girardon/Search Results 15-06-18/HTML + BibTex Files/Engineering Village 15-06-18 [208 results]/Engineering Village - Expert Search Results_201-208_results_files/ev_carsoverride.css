@@ -1,0 +1,21 @@
+#ui-id-1{background:transparent;border:none;}
+ul#ui-id-1{background:white;}
+
+#menu-1{
+	width:72px;
+	max-width:72px;
+}
+#menu-2{
+	width:72px;
+	max-width:72px;
+}
+#helpMenu li{
+	background-image:none;
+	float:none;
+	padding:0;
+}
+#helpMenu.ui-widget-content{
+	border:none;
+}
+#helpMenu a:hover{color:#000000;}
+#menu-1.ui-state-active{color:#000000;}

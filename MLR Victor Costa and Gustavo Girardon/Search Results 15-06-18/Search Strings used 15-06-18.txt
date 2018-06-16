@@ -1,0 +1,29 @@
+Strings 15/06/18
+
+ACM 260
+acmdlTitle:("Performance test" "Load test" "stress test" "spike test" "soak test" "workload test" "automation test") AND ('tool' 'monitor' 'generator' 'plugin' 'plug-in' 'framework' 'injector' 'suite' 'analyzer' 'environment') AND ('software' 'system' 'application')
+    
+IEEE 1 40
+("Document Title":"Performance test" OR "Document Title":"Load test" OR "Document Title":"Stress test" OR "Document Title":"Spike test" OR "Document Title":"Workload test" OR "Document Title":"Automation test") AND (Tool OR Generator OR Monitor OR Plug* OR Framework OR Injector OR Suite OR Analyzer OR Environment) AND (Application)
+    
+IEEE 2 111
+("Document Title":"Performance test" OR "Document Title":"Load test" OR "Document Title":"Stress test" OR "Document Title":"Spike test" OR "Document Title":"Workload test" OR "Document Title":"Automation test") AND (Tool OR Generator OR Monitor OR Plug* OR Framework OR Injector OR Suite OR Analyzer OR Environment) AND (Software OR System)
+    
+IEEE 3 117
+("Document Title":"Performance testing" OR "Document Title":"Load testing" OR "Document Title":"Stress testing" OR "Document Title":"Spike testing" OR "Document Title":"Workload testing" OR "Document Title":"Automation testing") AND (Tool OR Generator OR Monitor OR Plug* OR Framework OR Injector OR Suite OR Analyzer OR Environment) AND (Application)
+    
+IEEE 4 188
+("Document Title":"Performance testing" OR "Document Title":"Load testing" OR "Document Title":"Stress testing" OR "Document Title":"Spike testing" OR "Document Title":"Workload testing" OR "Document Title":"Automation testing") AND (Tool OR Generator OR Monitor OR Plug* OR Framework OR Injector OR Suite OR Analyzer OR Environment) AND (Software OR System)
+    
+SpringerLink 252 
+(ab:("performance test") OR ab:("load test") OR ab:("stress test") OR ab:("spike test") OR ab:("soak test") OR ab:("workload test") OR ab:("automation test")) AND (ab:(tool) OR ab:(generator) OR ab:(monitor) OR ab:(plugin) OR ab:(plug-in) OR ab:(framework) OR ab:(injector) OR ab:(suite) OR ab:(analyzer) OR ab:(environment)) AND (ab:(software) OR ab:(system) OR ab:(application))
+Within Computer Science English
+    
+SCOPUS 395
+TITLE ( ( "performance test"  OR  "load test"  OR  "stress test"  OR  "spike test"  OR  "workload test"  OR  "automation test" )  OR  ( "performance testing"  OR  "load testing"  OR  "stress testing"  OR  "spike testing"  OR  "workload testing"  OR  "automation testing" ) )  AND  TITLE-ABS-KEY ( 'tool'  OR  'generator'  OR  'monitor'  OR  'generator'  OR  'plugin'  OR  'plug-in'  OR  'framework'  OR  'injector'  OR  'suite'  OR  'analyzer'  OR  'environment' )  AND  ( 'software'  OR  'system'  OR  'application' )  AND  ( LIMIT-TO ( SUBJAREA ,  "COMP " ) ) 
+    
+Engineering Village 208
+(((("Performance Testing" OR "Load Testing" OR "Stress Testing" OR "Spike Testing" OR "Soak Testing" OR "Workload Testing" OR "Automation Testing") WN TI) OR (("Performance Test" OR "Load Test" OR "Stress Test" OR "Spike Test" OR "Soak Test" OR "Workload Test" OR "Automation Test") WN TI)) AND ((Tool OR Generator OR Monitor OR Plugin OR Plug-in OR Framework OR Injector OR Suite OR Analyzer OR Environment) WN KY) AND ((Software OR System OR Application) WN KY) AND ({english} WN LA))
+    
+Science Direct 85
+TITLE("Performance Test" OR "Load Test" OR "Stress Test" OR "Spike Test" OR "Soak Test" OR "Workload Test" OR "Automation Test") AND (Tool OR Generator OR Monitor OR Plugin OR Plug-in OR Framework OR Injector OR Suite OR Analyzer OR Environment) AND (Software OR System OR Application) [All Sources(Computer Science)]
